@@ -1,0 +1,9 @@
+{
+  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-prettier"],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"],
+    "color-hex-case": "lower",
+    "order/properties-alphabetical-order": true
+  }
+}

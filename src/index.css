@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-xl;
+    @apply md:text-2xl;
+    @apply mb-3;
+    @apply md:mb-4;
+  }
+
+  h2 {
+    @apply text-lg;
+    @apply md:text-xl;
+    @apply mb-2;
+    @apply md:mb-3;
+  }
+
+  h3 {
+    @apply text-base;
+    @apply md:text-lg;
+    @apply mb-1;
+    @apply md:mb-2;
+  }
+
+  p {
+    @apply mb-1;
+    @apply md:mb-2;
+  }
+
+  input {
+    @apply text-on-surface;
+    @apply bg-surface;
+  }
+
+  button:focus {
+    outline: unset;
+  }
+}
+
+@layer utilities {
+  .fill-transparent {
+    fill: transparent;
+  }
+
+  .w-md {
+    width: 28rem;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
