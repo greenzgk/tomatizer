@@ -1,8 +1,8 @@
 {
-  "name": "pomidorka",
+  "name": "tomatizer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://greenzgk.github.io/pomidorka",
+  "homepage": "https://greenzgk.github.io/tomatizer",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
