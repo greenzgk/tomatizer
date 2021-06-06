@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/pomidorka/static/css/main.553600a9.chunk.css",
-    "main.js": "/pomidorka/static/js/main.ccfa97a6.chunk.js",
-    "main.js.map": "/pomidorka/static/js/main.ccfa97a6.chunk.js.map",
-    "runtime-main.js": "/pomidorka/static/js/runtime-main.03ba5b5c.js",
-    "runtime-main.js.map": "/pomidorka/static/js/runtime-main.03ba5b5c.js.map",
-    "static/js/2.e95e9ada.chunk.js": "/pomidorka/static/js/2.e95e9ada.chunk.js",
-    "static/js/2.e95e9ada.chunk.js.map": "/pomidorka/static/js/2.e95e9ada.chunk.js.map",
-    "static/js/3.45701497.chunk.js": "/pomidorka/static/js/3.45701497.chunk.js",
-    "static/js/3.45701497.chunk.js.map": "/pomidorka/static/js/3.45701497.chunk.js.map",
-    "index.html": "/pomidorka/index.html",
-    "static/css/main.553600a9.chunk.css.map": "/pomidorka/static/css/main.553600a9.chunk.css.map",
-    "static/js/2.e95e9ada.chunk.js.LICENSE.txt": "/pomidorka/static/js/2.e95e9ada.chunk.js.LICENSE.txt",
-    "static/js/timer.worker.f753f27a.worker.js": "/pomidorka/static/js/timer.worker.f753f27a.worker.js",
-    "static/js/timer.worker.f753f27a.worker.js.map": "/pomidorka/static/js/timer.worker.f753f27a.worker.js.map"
+    "main.css": "/tomatizer/static/css/main.553600a9.chunk.css",
+    "main.js": "/tomatizer/static/js/main.57d476ba.chunk.js",
+    "main.js.map": "/tomatizer/static/js/main.57d476ba.chunk.js.map",
+    "runtime-main.js": "/tomatizer/static/js/runtime-main.4cf19d4a.js",
+    "runtime-main.js.map": "/tomatizer/static/js/runtime-main.4cf19d4a.js.map",
+    "static/js/2.80031faa.chunk.js": "/tomatizer/static/js/2.80031faa.chunk.js",
+    "static/js/2.80031faa.chunk.js.map": "/tomatizer/static/js/2.80031faa.chunk.js.map",
+    "static/js/3.55cb10b6.chunk.js": "/tomatizer/static/js/3.55cb10b6.chunk.js",
+    "static/js/3.55cb10b6.chunk.js.map": "/tomatizer/static/js/3.55cb10b6.chunk.js.map",
+    "index.html": "/tomatizer/index.html",
+    "static/css/main.553600a9.chunk.css.map": "/tomatizer/static/css/main.553600a9.chunk.css.map",
+    "static/js/2.80031faa.chunk.js.LICENSE.txt": "/tomatizer/static/js/2.80031faa.chunk.js.LICENSE.txt",
+    "static/js/timer.worker.c1ae7d4d.worker.js": "/tomatizer/static/js/timer.worker.c1ae7d4d.worker.js",
+    "static/js/timer.worker.c1ae7d4d.worker.js.map": "/tomatizer/static/js/timer.worker.c1ae7d4d.worker.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.03ba5b5c.js",
-    "static/js/2.e95e9ada.chunk.js",
+    "static/js/runtime-main.4cf19d4a.js",
+    "static/js/2.80031faa.chunk.js",
     "static/css/main.553600a9.chunk.css",
-    "static/js/main.ccfa97a6.chunk.js"
+    "static/js/main.57d476ba.chunk.js"
   ]
 }
