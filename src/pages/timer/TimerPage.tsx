@@ -40,37 +40,45 @@ export function TimerPage() {
     }))
   }, [setAppState])
 
-  const restTimeout = React.useCallback(() => {
-    notify("It's working time!")
-    reset(settings.workInterval)
-    setAppState(prev => ({
-      ...prev,
-      count: prev.count + 1,
-      nextAction: 'work',
-      status: 'idle',
-    }))
-  }, [notify, reset, setAppState, settings.workInterval])
+  const restTimeout = React.useCallback(
+    (disableNotification = false) => {
+      if (!disableNotification) notify("It's working time!")
 
-  const workTimeout = React.useCallback(() => {
-    notify("It's resting time!")
-    reset(settings.shortBreakInterval)
+      reset(settings.workInterval)
+      setAppState(prev => ({
+        ...prev,
+        count: prev.count + 1,
+        nextAction: 'work',
+        status: 'idle',
+      }))
+    },
+    [notify, reset, setAppState, settings.workInterval]
+  )
 
-    const nextCount = count + 1
+  const workTimeout = React.useCallback(
+    (disableNotification = false) => {
+      if (!disableNotification) notify("It's resting time!")
 
-    const next =
-      nextCount > 0 &&
-      nextCount % settings.workIntervalsCountBeforeLongBreak === 0
-        ? 'longBreak'
-        : 'break'
-    setAppState(prev => ({ ...prev, nextAction: next }))
-  }, [
-    count,
-    notify,
-    reset,
-    setAppState,
-    settings.shortBreakInterval,
-    settings.workIntervalsCountBeforeLongBreak,
-  ])
+      reset(settings.shortBreakInterval)
+
+      const nextCount = count + 1
+
+      const next =
+        nextCount > 0 &&
+        nextCount % settings.workIntervalsCountBeforeLongBreak === 0
+          ? 'longBreak'
+          : 'break'
+      setAppState(prev => ({ ...prev, nextAction: next }))
+    },
+    [
+      count,
+      notify,
+      reset,
+      setAppState,
+      settings.shortBreakInterval,
+      settings.workIntervalsCountBeforeLongBreak,
+    ]
+  )
 
   const handleStart = () => {
     switch (nextAction) {
@@ -114,6 +122,29 @@ export function TimerPage() {
     reset(settings.workInterval)
   }
 
+  const handleSkip = () => {
+    setAppState(prev => ({
+      ...prev,
+      status: 'idle',
+      workMs:
+        nextAction === 'work'
+          ? prev.workMs + settings.workInterval
+          : prev.workMs,
+      breakMs:
+        nextAction === 'break'
+          ? prev.breakMs + settings.shortBreakInterval
+          : nextAction === 'longBreak'
+          ? settings.longBreakInterval
+          : prev.breakMs,
+    }))
+
+    if (nextAction === 'work') {
+      workTimeout(true)
+    } else {
+      restTimeout(true)
+    }
+  }
+
   function renderButtons() {
     if (timerStatus === 'running') {
       return (
@@ -126,8 +157,13 @@ export function TimerPage() {
     return (
       <>
         <ContainedButton primary onClick={handleStart}>
-          {nextAction === 'work' ? (count > 0 ? 'Next' : 'Start') : 'Rest'}
+          {nextAction === 'work' ? 'Start' : 'Rest'}
         </ContainedButton>
+        {!(nextAction === 'work' && count === 0) && (
+          <ContainedButton primary onClick={handleSkip}>
+            Skip
+          </ContainedButton>
+        )}
         {nextAction === 'work' && count > 0 && (
           <ContainedButton secondary onClick={handleDone}>
             Done
