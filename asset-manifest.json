@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tomatizer/static/css/main.553600a9.chunk.css",
-    "main.js": "/tomatizer/static/js/main.4e31bc47.chunk.js",
-    "main.js.map": "/tomatizer/static/js/main.4e31bc47.chunk.js.map",
+    "main.js": "/tomatizer/static/js/main.be37164b.chunk.js",
+    "main.js.map": "/tomatizer/static/js/main.be37164b.chunk.js.map",
     "runtime-main.js": "/tomatizer/static/js/runtime-main.4cf19d4a.js",
     "runtime-main.js.map": "/tomatizer/static/js/runtime-main.4cf19d4a.js.map",
     "static/js/2.80031faa.chunk.js": "/tomatizer/static/js/2.80031faa.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.4cf19d4a.js",
     "static/js/2.80031faa.chunk.js",
     "static/css/main.553600a9.chunk.css",
-    "static/js/main.4e31bc47.chunk.js"
+    "static/js/main.be37164b.chunk.js"
   ]
 }
