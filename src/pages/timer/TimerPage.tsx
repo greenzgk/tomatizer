@@ -1,12 +1,18 @@
-import { AppAction } from 'app-types';
-import { Card, ContainedButton, DigitalWatchFace } from 'components';
-import { initialAppState, useAppState } from 'contexts/app-state-context';
-import { useSettings } from 'contexts/settings-context';
-import { DEFAULT_INTERVAL_MS, useDocumentTitle, useNotification, useTimer } from 'hooks';
-import * as React from 'react';
+import * as React from 'react'
 
-import { CountStatCard, TimeStatCard } from './cards';
-import { Header } from './Header';
+import { Card, ContainedButton, DigitalWatchFace } from 'components'
+import { CountStatCard, TimeStatCard } from './cards'
+import {
+  DEFAULT_INTERVAL_MS,
+  useDocumentTitle,
+  useNotification,
+  useTimer,
+} from 'hooks'
+import { initialAppState, useAppState } from 'contexts/app-state-context'
+
+import { AppAction } from 'app-types'
+import { Header } from './Header'
+import { useSettings } from 'contexts/settings-context'
 
 export function TimerPage() {
   const [appState, setAppState] = useAppState()
@@ -20,11 +26,18 @@ export function TimerPage() {
 
   useDocumentTitle(remainingMs, count, status)
 
-  const max: Record<AppAction, number> = {
-    longBreak: settings.longBreakInterval,
-    break: settings.shortBreakInterval,
-    work: settings.workInterval,
-  }
+  const max: Record<AppAction, number> = React.useMemo(
+    () => ({
+      longBreak: settings.longBreakInterval,
+      break: settings.shortBreakInterval,
+      work: settings.workInterval,
+    }),
+    [
+      settings.longBreakInterval,
+      settings.shortBreakInterval,
+      settings.workInterval,
+    ]
+  )
 
   const handleWorkTick = React.useCallback(() => {
     setAppState(prev => ({
@@ -59,23 +72,23 @@ export function TimerPage() {
     (disableNotification = false) => {
       if (!disableNotification) notify("It's resting time!")
 
-      reset(settings.shortBreakInterval)
-
       const nextCount = count + 1
 
-      const next =
+      const next: AppAction =
         nextCount > 0 &&
         nextCount % settings.workIntervalsCountBeforeLongBreak === 0
           ? 'longBreak'
           : 'break'
+
+      reset(max[next])
       setAppState(prev => ({ ...prev, nextAction: next }))
     },
     [
       count,
+      max,
       notify,
       reset,
       setAppState,
-      settings.shortBreakInterval,
       settings.workIntervalsCountBeforeLongBreak,
     ]
   )
@@ -131,11 +144,10 @@ export function TimerPage() {
           ? prev.workMs + settings.workInterval
           : prev.workMs,
       breakMs:
-        nextAction === 'break'
-          ? prev.breakMs + settings.shortBreakInterval
-          : nextAction === 'longBreak'
-          ? settings.longBreakInterval
-          : prev.breakMs,
+        prev.breakMs +
+        (nextAction === 'break'
+          ? settings.shortBreakInterval
+          : settings.longBreakInterval),
     }))
 
     if (nextAction === 'work') {
